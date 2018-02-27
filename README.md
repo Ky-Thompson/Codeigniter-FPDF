@@ -136,7 +136,7 @@ $config['footer_page_literal'] = 'Página';
 ```
 ## testing pdf class
 
-Copy or move **application/tird_party/controllers/Testpdf**.php to **application/controllers/Testpdf.php**, and this controller as you usually do.
+Copy or move **application/tird_party/controllers/Testpdf**.php to **application/controllers/Testpdf.php**, then call this controller as you usually do.
 
 That's all. Enjoy.
 
