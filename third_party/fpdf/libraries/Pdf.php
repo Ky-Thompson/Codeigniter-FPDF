@@ -32,8 +32,9 @@ class Pdf extends FPDF
     protected $head_subtitle;
     protected $footer_page_literal;
 
-    private $base_url;
 
+    private $base_url;
+    private $format;
 
     function __construct()
     {
@@ -45,9 +46,10 @@ class Pdf extends FPDF
         $this->size                 =   $ci->config->item('size');
         $this->rotation             =   $ci->config->item('rotation');
         $this->units                =   $ci->config->item('units');
-        $this->head_title           =   utf8_decode($ci->config->item('head_title'));
-        $this->head_subtitle        =   utf8_decode($ci->config->item('head_subtitle'));
-        $this->footer_page_literal  =   utf8_decode($ci->config->item('footer_page_literal'));
+        $this->format               =   $ci->config->item('format');
+        $this->head_title           =   $this->format($ci->config->item('head_title'));
+        $this->head_subtitle        =   $this->format($ci->config->item('head_subtitle'));
+        $this->footer_page_literal  =   $this->format($ci->config->item('footer_page_literal'));
 
         $this->base_url         =   $ci->config->item('url_wrapper');
         if ( $this->base_url === TRUE)
@@ -201,7 +203,44 @@ class Pdf extends FPDF
         $this->AddPage( $this->orientation , $this->size , $this->rotation );
     }
 
+    /**
+    * render function
+    *
+    * @param string
+    * @param string
+    * @param bool
+    * @return void
+    *
+    * Behaviour:
+    * dest,             indicates where send the documment. It can bo one of following
+    *                   'I': send the file inline to the browser. The PDF viewer is used if available.
+    *                   'D': send to the browser and force a file download with the name given by name.
+    *                   'F': save to a local file with the name given by name (may include a path).
+    *                   'S': return the document as a string.
+    *
+    * name,             The name of the file. It is ignored in case of destination S.
+    *                   The default value is doc.pdf.
+    *
+    * $this->format,    Indicates if name is encoded in ISO-8859-1 (false) or UTF-8 (true).
+    *                   Only used for destinations I and D.
+    *                   The default value is false.
+    **/
+    function render($dest='I',$name='document.pdf')
+    {
+        $this->Output($dest,$name,$this->format);
+    }
 
+
+    /**
+    * format function
+    *
+    * @param string
+    * @return string
+    **/
+    function format($str)
+    {
+        return utf8_decode($str);
+    }
 }
 
 

@@ -109,7 +109,7 @@ $config['head_title'] = '@pedroruizhidalg';
 |
 | Main page's Subitle
 */
-$config['head_subtitle'] = 'Coding the world since 1983';
+$config['head_subtitle'] = 'coding the world since 1983';
 
 /*
 | -------------------------------------------------------------------
@@ -119,6 +119,16 @@ $config['head_subtitle'] = 'Coding the world since 1983';
 | Set 'page' in your language
 */
 $config['footer_page_literal'] = 'Página';
+
+/*
+| -------------------------------------------------------------------
+|  Format
+| -------------------------------------------------------------------
+|
+| Prototype boolean
+|  TRUE means UTF8.false means ISO-8959-1
+*/
+$config['format'] = FALSE;
 
 /*
 * application/third_party/fpdf/config/pdf.php
