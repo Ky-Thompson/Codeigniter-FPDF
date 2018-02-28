@@ -138,6 +138,8 @@ $config['footer_page_literal'] = 'Página';
 
 Copy or move **application/tird_party/controllers/Testpdf**.php to **application/controllers/Testpdf.php**, then call this controller as you usually do.
 
+More information about this [wiki](https://github.com/PedroRuiz/Codeigniter-FPDF/wiki)
+
 That's all. Enjoy.
 
 ```
